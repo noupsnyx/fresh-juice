@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head >
+        <meta charset="utf-8">
+        <title>Fresh juice</title>
+        <link href="https://fonts.googleapis.com/css2?family=poppins:wght@400;700&display=swap"rel="stylesheet">
+        
+        <link rel="stylesheet" href="fresh juice 2{.css">
+    </head>
+    <body>
+        <nav>
+            <ul class="menu">
+            <li><a href="#Accueil">Accueil</a></li>
+            <li><a href="#Nos Produits">Nos Produits</a></li>
+            <li><a href="#Contact">Contact</a></li>
+        </ul>
+        </nav>
+    <section id="Accueil" class="hero">
+        <div class="hero-content">
+    <h2><strong><i>BIENVENUE CHEZ FRESH JUICE</i></strong></h2>
+    <p>Des jus 100% naturels, frais et savoureux.</p>
+        </div>
+    </section>
+    <section id="NosProduits">
+    <h2>Nos Produits</h2>
+    <p>Nous vous proposons trois types de jus 100% naturels :</p>
+
+    <div class="produits">
+    
+        <div class="card">
+            <img src="https://www.papillesetpupilles.fr/wp-content/uploads/2017/12/Jus-dorange-c-Pixel2013-CC0-pixabay.jpg" alt="Jus d'orange">
+            <h3>JUS D'ORANGE</h3>
+            <p>Découvrez notre jus d'orange 100% naturel, pressé à partir d'oranges fraîches et juteuses.<br>
+            Sans sucre ajouté, sans conservateur, ni colorant : juste le goût authentique de l'orange, plein de vitamines et de fraîcheur.</p>
+        </div>
+
+        
+        <div class="card">
+            <img src="https://www.financialexpress.com/wp-content/uploads/2024/06/Aamras-Freepik.jpg" alt="Jus de mangue">
+            <h3>JUS DE MANGUE</h3>
+            <p>Savourez notre jus de mangue 100% naturel, préparé à partir de mangues fraîches et bien mûres.<br>
+            Crémeux, sucré et riche en fibres, il vous apporte une sensation de douceur tropicale à chaque gorgée.</p>
+        </div>
+
+    
+        <div class="card">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.Ej2Ss93mQ_H2vGI5rDSyhQHaGq?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Jus d'ananas">
+            <h3>JUS D'ANANAS</h3>
+            <p>Une vague de fraîcheur tropicale avec notre jus d'ananas naturel, élaboré à partir d'ananas frais et juteux.<br>
+            Léger, rafraîchissant et riche en vitamine C, il désaltère tout en apportant un goût sucré et acidulé unique.</p>
+        </div>
+    </div>
+</section>
+    <script>
+        window.onload = function(){
+            alert("Bienvenue chez fresh juice -10% sur votre premiere commande!");
+        }
+    </script>
+    <p id="visitorcount"></p>
+    <script>
+        let count =
+        localStorage.getItem("visits") || 0;
+        count++;
+        localStorage.setItem("visits", count);
+
+        document.getElementById("visitorcount").textContent = "Vous etes le visiteur numero " + count;
+    </script>
+    <button id="toggletheme">mode sombre</button>
+    <script>
+  const button = document.getElementById("toggletheme");
+  
+  button.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    if(document.body.classList.contains("dark")){
+      button.textContent = "☀️ Mode clair";
+      localStorage.setItem("theme", "dark");
+    } else {
+      button.textContent = "🌙 Mode sombre";
+      localStorage.setItem("theme", "light");
+    }
+  });
+  if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark");
+    button.textContent = "☀️ Mode clair";
+  }
+</script>
+    <section id="Contact">
+        <p>Veiller svp remplir ce formulaire pour passer votre commande
+            <br><form id="orderform"
+        action="https://formsubmit.co/noupsnyx@gmail.com" 
+        method="post">
+            <input type="text" name="nom" placeholder="Entrez votre nom" required><br>
+            <input type="email" name="email" placeholder="Entrez votre adresse email" required><br>
+            
+            <label>Choisissez vos jus :</label>
+            <label>jus d'orange (1000FCFA)<input type="number" class="qty" data-juice="orange"
+                value="0" min="0"></label>
+                <label>jus de mangue (1200FCFA)<input type="number" class="qty" data-juice="mangue"
+                    value="0" min="0"> </label>
+                    <label>jus d'ananas (1500FCFA)<input type="number" class="qty" data-juice="ananas"
+                        value="0" min="0"></label>
+            <p id="total">Total : 0 FCFA</p>
+            <p><input type="submit" value="envoyer"></p>
+        </form>
+        <script>
+            const priceMap = {
+                orange: 1000,
+                mangue: 1200,
+                ananas: 1500   
+            };
+            const qtyInputs =
+            document.querySelectorAll(".qty");
+            const totalEl =
+            document.getElementById("total");
+            const form =
+            document.getElementById("orderform")
+
+            function updatetotal() {
+                let total = 0;
+                qtyInputs.forEach(input => {
+                    const qty = parseInt(input.value) ||
+                    0;
+                    const juice =
+                    input.dataset.juice;
+                    total += qty * priceMap[juice];
+                });
+                totalEl.textContent = "Total : " + total.toLocaleString("fr-FR") + " FCFA";
+            }
+
+            qtyInputs.forEach(input => {
+                input.addEventListener("input", updatetotal);
+            });
+
+            form.addEventListener("submit", e => {
+                updatetotal();
+                alert("Commande envoyee!" + totalEl.textContent);
+            });
+
+            updatetotal();
+            </script>
+        Vous recevrez une reponse le plus vite.<footer><p>N'hesiter pas a jeter un coup d'oeil sur nos reseaux.</p>
+        <ul>
+            <li><a href="@freshjuice237">Instagram</a></li>
+            <li><a href="mailto:freshjuice237@gmail.com">Boite mail</a></li>
+        </ul></footer></p>
+    </section>
+    </body>
+</html>
